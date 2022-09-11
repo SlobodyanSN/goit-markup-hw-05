@@ -545,21 +545,7 @@ body {
 
   overflow: hidden;
 }
-.project-thumb::before {
-  display: block;
-  content: '';
-  background: rgba(33, 150, 243, 0.9);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateY(100%);
 
-  transition-property: transform;
-  transition-duration: 250ms;
-  transition-timing-function: var(--t-t-f);
-}
 .thumb-txt {
   position: absolute;
   top: 0;
@@ -569,18 +555,15 @@ body {
   font-size: 18px;
   line-height: calc(28 / 18);
   color: var(--accent-font-color);
+  background-color: rgba(33, 150, 243, 0.9);
+
   transform: translateY(100%);
 
   transition-property: transform;
   transition-duration: 250ms;
   transition-timing-function: var(--t-t-f);
+}
 
-  overflow: auto;
-}
-.project-link:hover .project-thumb::before,
-.project-link:focus .project-thumb::before {
-  transform: translateY(0%);
-}
 .project-link:hover .thumb-txt,
 .project-link:focus .thumb-txt {
   transform: translateY(0%);
@@ -607,4 +590,68 @@ body {
   margin-bottom: 0px;
   margin-top: 4px;
   letter-spacing: 0.03em;
+}
+/* -----------------modal-window--------------------- */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  transition-property: opacity, scale;
+  transition-duration: 250ms;
+  transition-timing-function: var(--t-t-f);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  scale: 0.5;
+  pointer-events: none;
+  visibility: hidden;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 528px;
+  height: 581px;
+  background-color: var(--accent-font-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.modal-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: var(--main-font-color);
+
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: var(--t-t-f);
+}
+.modal-btn-icon {
+  fill: currentColor;
+}
+
+.modal-btn:hover,
+.modal-btn:focus {
+  color: var(--accent-font-color);
+  background-color: var(--accent-color);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
 }
